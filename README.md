@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Finance Tracker
 
-## Getting Started
+Ứng dụng quản lý tài chính cá nhân với Django REST API backend và Next.js frontend.
 
-First, run the development server:
+## Cấu trúc Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+personal-finance-tracker/
+├── backend/          # Django REST API
+├── frontend/         # Next.js App
+└── docs/            # Documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend
+- Django 5.1.7 + Django REST Framework
+- PostgreSQL
+- JWT Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS + shadcn/ui
+- Zustand + nuqs
 
-## Learn More
+## Quick Start
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Backend Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cd backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Create virtual environment
+python -m venv venv
 
-## Deploy on Vercel
+# Activate (Windows)
+venv\Scripts\activate
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Install dependencies
+pip install -r requirements.txt
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Setup database
+createdb finance_db
+
+# Configure .env
+cp .env.example .env
+# Edit .env with your database credentials
+
+# Run migrations
+python manage.py migrate
+
+# Create superuser
+python manage.py createsuperuser
+
+# Seed default categories
+python manage.py seed_categories
+
+# Run server
+python manage.py runserver
+```
+
+Backend runs at: `http://localhost:8000`
+
+### 2. Frontend Setup
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env.local
+# Add: NEXT_PUBLIC_API_URL=http://localhost:8000
+
+# Run development server
+npm run dev
+```
+
+Frontend runs at: `http://localhost:3000`
+
+## API Endpoints
+
+- `POST /api/auth/register/` - Register
+- `POST /api/auth/login/` - Login (get JWT)
+- `GET /api/transactions/` - List transactions
+- `POST /api/transactions/` - Create transaction
+- `GET /api/categories/` - List categories
+- `GET /api/dashboard/summary/` - Dashboard data
+
+## Documentation
+
+Xem thêm trong folder `docs/`:
+- Product requirements
+- System design
+- Feature specifications
+- Engineering guides
+
+## Development
+
+- Backend: `cd backend && python manage.py runserver`
+- Frontend: `cd frontend && npm run dev`
+- Admin panel: `http://localhost:8000/admin`
+
+## License
+
+MIT
