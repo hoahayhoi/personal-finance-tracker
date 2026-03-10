@@ -11,13 +11,13 @@
 |---|---|---|---|
 | Phase 0 — Setup | 5 | 0 | 0% |
 | Phase 1 — Auth | 6 | 0 | 0% |
-| Phase 2 — Landing Page | 5 | 0 | 0% |
+| Phase 2 — Landing Page | 5 | 5 | 100% |
 | Phase 3 — Dashboard | 7 | 0 | 0% |
 | Phase 4 — Transactions | 9 | 0 | 0% |
 | Phase 5 — Categories | 5 | 0 | 0% |
 | Phase 6 — Profile | 3 | 0 | 0% |
 | Phase 7 — Polish & Deploy | 6 | 0 | 0% |
-| **Tổng** | **46** | **0** | **0%** |
+| **Tổng** | **46** | **5** | **11%** |
 
 > **Cách cập nhật:** Đổi `[ ]` → `[x]` khi hoàn thành, cập nhật số liệu ở bảng trên.
 
@@ -52,11 +52,11 @@
 
 | # | Task | FR | Status | Ghi chú |
 |---|---|---|---|---|
-| 2.1 | Tạo route `/` — page.tsx + metadata SEO | FR-LP06 | [ ] | |
-| 2.2 | Middleware redirect `/` → `/dashboard` nếu đã login | FR-LP01 | [ ] | |
-| 2.3 | Component `<HeroSection />` — tagline + 2 CTA | FR-LP02 | [ ] | |
-| 2.4 | Component `<FeaturesSection />` — 3 feature cards | FR-LP03 | [ ] | |
-| 2.5 | Responsive layout (mobile 375px + desktop 1280px) | FR-LP07 | [ ] | |
+| 2.1 | Tạo route `/` — page.tsx + metadata SEO | FR-LP06 | [x] | Hoàn thành với full SEO metadata |
+| 2.2 | Middleware redirect `/` → `/dashboard` nếu đã login | FR-LP01 | [x] | Smart redirect logic implemented |
+| 2.3 | Component `<HeroSection />` — tagline + 2 CTA | FR-LP02 | [x] | CTA buttons link to /register và /login |
+| 2.4 | Component `<FeaturesSection />` — 3 feature cards | FR-LP03 | [x] | 3 feature cards với icons |
+| 2.5 | Responsive layout (mobile 375px + desktop 1280px) | FR-LP07 | [x] | Mobile-first responsive design |
 
 ---
 
@@ -133,7 +133,7 @@
 |---|---|---|
 | 2026-03-09 | 📋 Docs | Khởi tạo Progress Tracker |
 | 2026-03-09 | 📋 Docs | Tạo BA doc Feature Landing Page (`docs/features/landing_page.md`) |
-| 2026-03-09 | 🔼 Priority | Landing Page được nâng lên Must Have, thực hiện ở Phase 2 (trước Dashboard) |
+| 2026-03-10 | ✅ Code | Hoàn thành Landing Page - components, middleware, SEO metadata |
 
 ---
 
@@ -144,3 +144,5 @@
 | Ngày | Quyết định | Lý do |
 |---|---|---|
 | 2026-03-09 | Dùng `middleware.ts` để redirect `/` thay vì client-side | Tránh layout flash, redirect xảy ra ở Edge |
+| 2026-03-09 | 🔼 Priority | Landing Page được nâng lên Must Have, thực hiện ở Phase 2 (trước Dashboard) |
+| 2026-03-10 | ✅ Code | Dùng Server Components cho landing page, không cần 'use client' |

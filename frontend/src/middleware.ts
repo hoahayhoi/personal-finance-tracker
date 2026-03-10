@@ -7,15 +7,12 @@ export default withAuth(
     const { pathname } = req.nextUrl
     const token = req.nextauth.token
 
-    // Redirect root to dashboard if authenticated
+    // Smart redirect: Redirect root to dashboard if authenticated
     if (pathname === '/' && token) {
       return NextResponse.redirect(new URL('/dashboard', req.url))
     }
 
-    // Redirect root to login if not authenticated
-    if (pathname === '/' && !token) {
-      return NextResponse.redirect(new URL('/login', req.url))
-    }
+    // Allow landing page for unauthenticated users (no redirect to login)
 
     return NextResponse.next()
   },
