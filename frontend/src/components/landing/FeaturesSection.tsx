@@ -5,7 +5,7 @@ export function FeaturesSection() {
 
   return (
     <section id="features" className="py-24 bg-muted/30">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">

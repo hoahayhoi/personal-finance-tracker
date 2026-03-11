@@ -1,6 +1,7 @@
 // Root Layout với providers và global styles
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { Toaster } from 'sonner'
 import { Providers } from '@/components/providers/Providers'
 import './globals.css'
@@ -29,6 +30,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             closeButton
           />
         </Providers>
+        
+        {/* Load thư viện Google GCR */}
+        <Script 
+          src="https://apis.google.com/js/platform.js?onload=renderOptIn" 
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto max-w-6xl py-12">
+    <footer className="border-t border-gray-100 bg-background">
+      <div className="container mx-auto max-w-7xl py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">

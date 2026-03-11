@@ -134,6 +134,10 @@
 | 2026-03-09 | 📋 Docs | Khởi tạo Progress Tracker |
 | 2026-03-09 | 📋 Docs | Tạo BA doc Feature Landing Page (`docs/features/landing_page.md`) |
 | 2026-03-10 | ✅ Code | Hoàn thành Landing Page - components, middleware, SEO metadata |
+| 2026-03-11 | ✅ Code | Cập nhật Landing Page v2.0 - Flowify design với glassmorphism, responsive layout |
+| 2026-03-11 | ✅ Code | Thêm WhyChooseUs section - comparison table với Playfair Display font |
+| 2026-03-11 | ✅ Code | Chuẩn hóa container width - tất cả sections dùng max-w-6xl |
+| 2026-03-11 | ✅ Code | Header v5.1 - Two-row layout với scroll behavior, search bar, navigation |
 
 ---
 
@@ -146,3 +150,7 @@
 | 2026-03-09 | Dùng `middleware.ts` để redirect `/` thay vì client-side | Tránh layout flash, redirect xảy ra ở Edge |
 | 2026-03-09 | 🔼 Priority | Landing Page được nâng lên Must Have, thực hiện ở Phase 2 (trước Dashboard) |
 | 2026-03-10 | ✅ Code | Dùng Server Components cho landing page, không cần 'use client' |
+| 2026-03-11 | ✅ Code | Flowify v2.0: Glassmorphism mockups, Next.js Image optimization, brand colors (#8B5CF6) |
+| 2026-03-11 | ✅ Code | WhyChooseUs: Playfair Display font, comparison cards, certification badges |
+| 2026-03-11 | ✅ Code | Container consistency: Tất cả sections dùng max-w-6xl cho layout thống nhất |
+| 2026-03-11 | ✅ Code | Smart scroll header: Top bar ẩn khi scroll xuống, bottom nav luôn hiển thị |

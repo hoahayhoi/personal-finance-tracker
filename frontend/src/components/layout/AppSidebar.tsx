@@ -12,6 +12,7 @@ const navigation = [
   { name: 'Danh mục', href: '/categories', icon: '🏷️' },
   { name: 'Báo cáo', href: '/reports', icon: '📈' },
   { name: 'Cài đặt', href: '/profile', icon: '⚙️' },
+  { name: 'Test', href: '/test', icon: '🧪' },
 ]
 
 export function AppSidebar() {

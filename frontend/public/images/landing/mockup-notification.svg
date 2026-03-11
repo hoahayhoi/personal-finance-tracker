@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150" viewBox="0 0 300 150" fill="none">
+  <defs>
+    <filter id="shadow" x="0" y="0" width="300" height="150" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#111827" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="18" y="18" width="264" height="114" rx="24" fill="#FFFFFF" fill-opacity="0.75"/>
+    <rect x="18.8" y="18.8" width="262.4" height="112.4" rx="23.2" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="1.6"/>
+  </g>
+  <circle cx="58" cy="74" r="22" fill="#8B5CF6"/>
+  <path d="M49 74l6 6 12-14" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="92" y="62" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#111827">Upfront Pay received</text>
+  <text x="92" y="84" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="500" fill="#6B7280">Transaction completed successfully</text>
+  <text x="92" y="109" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#7C3AED">+$2,450.00</text>
+</svg>
