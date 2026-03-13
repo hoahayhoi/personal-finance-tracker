@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 interface GCRProps {
@@ -28,31 +28,75 @@ declare global {
         }) => void
       }
     }
+    renderOptIn?: () => void
   }
 }
 
 export default function GCRTrigger({ orderData }: GCRProps) {
   const searchParams = useSearchParams()
   const shouldTrigger = searchParams.get('review_trigger') === 'true'
+  const [gapiReady, setGapiReady] = useState(false)
 
   useEffect(() => {
-    // Chỉ chạy nếu có cờ review_trigger và window.gapi đã sẵn sàng
-    if (shouldTrigger && typeof window !== 'undefined' && window.gapi) {
+    const checkGapi = () => {
+      if (typeof window !== 'undefined' && window.gapi) {
+        console.log('Google API ready!')
+        setGapiReady(true)
+        return true
+      }
+      return false
+    }
+
+    if (checkGapi()) return
+
+    const interval = setInterval(() => {
+      if (checkGapi()) {
+        clearInterval(interval)
+      }
+    }, 100)
+
+    const timeout = setTimeout(() => {
+      clearInterval(interval)
+      console.log('Google API load timeout')
+    }, 10000)
+
+    return () => {
+      clearInterval(interval)
+      clearTimeout(timeout)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log('GCR Debug:', { shouldTrigger, gapiReady, orderData })
+    
+    if (shouldTrigger && gapiReady && typeof window !== 'undefined' && window.gapi) {
       const gapi = window.gapi
 
+      console.log('Loading GCR surveyoptin...')
       gapi.load('surveyoptin', function() {
-        gapi.surveyoptin.render({
-          "merchant_id": 123456789, // TODO: Thay bằng ID thật từ anh Đức
+        console.log('GCR surveyoptin loaded, rendering popup...')
+        
+        const config = {
+          "merchant_id": 123456789,
           "order_id": orderData.id,
           "email": orderData.email,
           "delivery_country": orderData.country,
           "estimated_delivery_date": orderData.deliveryDate,
           "opt_in_style": "CENTER_DIALOG"
-        })
+        }
+        
+        console.log('GCR Config:', config)
+        gapi.surveyoptin.render(config)
+      })
+    } else {
+      console.log('GCR not triggered:', { 
+        shouldTrigger, 
+        gapiReady,
+        hasWindow: typeof window !== 'undefined',
+        hasGapi: !!(typeof window !== 'undefined' && window.gapi)
       })
     }
-  }, [shouldTrigger, orderData])
+  }, [shouldTrigger, gapiReady, orderData])
 
-  // Component này không hiển thị gì lên giao diện
   return null
 }

@@ -18,7 +18,6 @@ export default function TestPage() {
   }
 
   const handleTriggerGCRByURL = () => {
-    // Trigger GCR bằng cách thêm query parameter
     const currentUrl = new URL(window.location.href)
     currentUrl.searchParams.set('review_trigger', 'true')
     
