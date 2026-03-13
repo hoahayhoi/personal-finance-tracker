@@ -35,7 +35,12 @@ declare global {
 export default function GCRTrigger({ orderData }: GCRProps) {
   const searchParams = useSearchParams()
   const shouldTrigger = searchParams.get('review_trigger') === 'true'
+  const rating = searchParams.get('rating')
+  const ratingNumber = rating ? parseInt(rating, 10) : null
   const [gapiReady, setGapiReady] = useState(false)
+  
+  // Chỉ trigger GCR popup nếu rating từ 7-10
+  const shouldShowGCRPopup = shouldTrigger && ratingNumber !== null && ratingNumber >= 7 && ratingNumber <= 10
 
   useEffect(() => {
     const checkGapi = () => {
@@ -67,9 +72,9 @@ export default function GCRTrigger({ orderData }: GCRProps) {
   }, [])
 
   useEffect(() => {
-    console.log('GCR Debug:', { shouldTrigger, gapiReady, orderData })
+    console.log('GCR Debug:', { shouldTrigger, shouldShowGCRPopup, ratingNumber, gapiReady, orderData })
     
-    if (shouldTrigger && gapiReady && typeof window !== 'undefined' && window.gapi) {
+    if (shouldShowGCRPopup && gapiReady && typeof window !== 'undefined' && window.gapi) {
       const gapi = window.gapi
 
       console.log('Loading GCR surveyoptin...')
@@ -90,13 +95,15 @@ export default function GCRTrigger({ orderData }: GCRProps) {
       })
     } else {
       console.log('GCR not triggered:', { 
-        shouldTrigger, 
+        shouldTrigger,
+        shouldShowGCRPopup,
+        ratingNumber,
         gapiReady,
         hasWindow: typeof window !== 'undefined',
         hasGapi: !!(typeof window !== 'undefined' && window.gapi)
       })
     }
-  }, [shouldTrigger, gapiReady, orderData])
+  }, [shouldTrigger, shouldShowGCRPopup, ratingNumber, gapiReady, orderData])
 
   return null
 }

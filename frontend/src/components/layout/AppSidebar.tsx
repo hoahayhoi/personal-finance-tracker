@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Báo cáo', href: '/reports', icon: '📈' },
   { name: 'Cài đặt', href: '/profile', icon: '⚙️' },
   { name: 'Test', href: '/test', icon: '🧪' },
+  { name: 'Test 2', href: '/test2', icon: '🔬' },
 ]
 
 export function AppSidebar() {
